@@ -1,0 +1,48 @@
+1. MemoryMap represents process/dump managed memory as hierarchic object model:
+
+ROOT
+  Heaps
+    SOH
+      Gen0
+        Object
+          *Link to Type
+      Gen1
+        Object
+          *Link to Type
+      Gen2
+        Object
+          *Link to Type
+    LOH
+      Object
+        *Link to Type
+      
+  Stacks
+    Frame
+      *Link to Method
+    
+  FinalizationQueue
+    Object
+      *Link to type
+    
+  AppDomain
+    Assembly
+      Module
+        Type
+          Handle (if relevant)
+          Property
+          Field
+          Method
+            Code
+
+  Handles
+    File
+    Pipe
+    Semaphore
+    Thread
+    Mutex
+    Other TBD
+  
+2. DumpDiff gets 2 dumps and returns the diff of the object allocated on heaps
+
+3. DetectDeadlocks detects deadlocks caused by Monitor locks. Relies on SyncBlock and thread info.
+      
